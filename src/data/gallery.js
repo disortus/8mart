@@ -1,38 +1,45 @@
+import emir from "../imgs/obshie/photo_2026-03-10_04-24-09.jpg";
+import musor from "../imgs/obshie/photo_2026-03-10_04-43-58.jpg";
+import szs from "../imgs/obshie/photo_2024-09-27_11-58-44.jpg";
+import kabz from "../imgs/obshie/photo_2024-10-11_07-51-59.jpg";
+import gpt from "../imgs/obshie/photo_2024-10-11_14-07-07.jpg";
+import dr from "../imgs/obshie/photo_dr.jpg";
+
 export const gallery = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800",
-    title: "Первое сентября",
+    image: szs,
+    title: "Староста и зам староста",
     description: "Наш первый день вместе, когда мы еще не знали, сколько забавных историй нас ждет впереди!"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800",
-    title: "Подготовка к сессии",
-    description: "Бессонные ночи, литры кофе и совместные конспекты. С вами любая учеба становится веселее."
+    image: kabz,
+    title: "Кабинет закрыт",
+    description: "Как обычно."
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800",
-    title: "Внеплановый выходной",
-    description: "Тот самый день, когда отменили две последние пары, и мы дружно пошли гулять. Идеальные моменты!"
+    image: gpt,
+    title: "chatGPT",
+    description: "Наш друг на веки"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80&w=800",
-    title: "Наш экватор",
-    description: "Эмоции бьют через край. Никто бы не смог сделать нашу группу такой яркой, если бы не вы!"
+    image: dr,
+    title: "Первое др в нашей группе",
+    description: "че за исторический момент же есть"
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1529156069898-49953eb1f5bc?auto=format&fit=crop&q=80&w=800",
+    image: emir,
     title: "Просто потому что",
-    description: "Обычный день, обычная перемена, но с вами это всегда праздник и повод для улыбок."
+    description: "Помните когда Эмирхан из будущего поздравлял вас?"
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=800",
-    title: "Тот самый концерт",
-    description: "Когда вся группа собралась на студвесну и болела за наших."
+    image: musor,
+    title: "Кем ты вырастишь, кем ты станешь?",
+    description: "по мнению биологички мы лишь горазды мусор собирать"
   }
 ];
