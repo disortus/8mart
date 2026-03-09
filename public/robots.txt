@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /*
+Allow: /
+Allow: /girls
+Allow: /moments
+Allow: /credits
+Allow: /scan
+Allow: /assets/

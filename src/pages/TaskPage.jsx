@@ -12,6 +12,18 @@ const TaskPage = () => {
   const [task, setTask] = useState(null);
   const [isValidating, setIsValidating] = useState(true);
 
+  // Security: explicitly tell search engines NOT to index this page dynamically.
+  useEffect(() => {
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = "robots";
+    metaRobots.content = "noindex, nofollow";
+    document.head.appendChild(metaRobots);
+
+    return () => {
+      document.head.removeChild(metaRobots);
+    };
+  }, []);
+
   useEffect(() => {
     // Simulate a tiny loading delay to make it feel like "decrypting" a QR
     const timer = setTimeout(() => {
@@ -38,7 +50,7 @@ const TaskPage = () => {
         >
           <Sparkles size={48} color="var(--primary)" />
         </motion.div>
-        <p style={{ marginTop: '20px', color: 'var(--text-light)' }}>
+        <p style={{ marginTop: '20px', color: 'var(--text-light)', fontSize: '1.1rem' }}>
           Расшифровываем код...
         </p>
       </div>
@@ -50,7 +62,7 @@ const TaskPage = () => {
   }
 
   return (
-    <div className="container" style={{ paddingBottom: '40px' }}>
+    <div className="container" style={{ paddingBottom: '40px', maxWidth: '700px' }}>
       <TaskCard task={task} />
       
       <div style={{ textAlign: 'center', marginTop: '40px' }}>
@@ -58,7 +70,7 @@ const TaskPage = () => {
           onClick={() => navigate('/')} 
           className="btn btn-outline"
         >
-          <Home size={18} />
+          <Home size={20} />
           Вернуться на главную
         </button>
       </div>

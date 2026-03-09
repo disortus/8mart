@@ -7,53 +7,70 @@ const MemoryCard = ({ image, title, description, index = 0 }) => {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: Math.min(index * 0.1, 0.5), ease: "easeOut" }}
       style={{
         background: 'white',
         borderRadius: 'var(--radius)',
         overflow: 'hidden',
         boxShadow: 'var(--shadow-md)',
-        transition: 'transform 0.3s ease',
+        transition: 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease',
         cursor: 'pointer',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
       }}
-      onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-      onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+      className="memory-card"
     >
       <div style={{
         width: '100%',
-        aspectRatio: '4/3',
-        overflow: 'hidden'
+        position: 'relative',
+        paddingTop: '75%', // 4:3 Aspect Ratio
+        overflow: 'hidden',
+        background: 'var(--background)'
       }}>
         <img 
           src={image} 
           alt={title} 
+          loading="lazy"
           style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            transition: 'transform 0.5s ease',
+            transition: 'transform 0.8s ease',
           }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-          onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          className="memory-image"
         />
       </div>
-      <div style={{ padding: '20px' }}>
+      <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <h3 style={{ 
           fontSize: '1.25rem', 
-          marginBottom: '8px',
-          color: 'var(--primary)',
+          marginBottom: '10px',
+          color: 'var(--text-dark)',
           fontWeight: 700 
         }}>
           {title}
         </h3>
         <p style={{ 
           fontSize: '0.95rem', 
-          color: 'var(--text-dark)',
-          lineHeight: 1.5 
+          color: 'var(--text-light)',
+          lineHeight: 1.6,
+          margin: 0
         }}>
           {description}
         </p>
       </div>
+      <style>{`
+        .memory-card:hover {
+          transform: translateY(-8px);
+          box-shadow: var(--shadow-lg);
+        }
+        .memory-card:hover .memory-image {
+          transform: scale(1.05);
+        }
+      `}</style>
     </motion.div>
   );
 };
