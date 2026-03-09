@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/8mart" element={<Home />} />
           <Route path="/girls" element={<GirlsPage />} />
           <Route path="/moments" element={<MomentsPage />} />
           <Route path="/credits" element={<CreditsPage />} />
