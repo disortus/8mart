@@ -1,8 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Map, Sparkles, Navigation } from 'lucide-react';
+
+import RebusTask from './RebusTask';
+import BinaryTask from './BinaryTask';
+import CodeTask from './CodeTask';
 
 const TaskCard = ({ task }) => {
+  // Select the appropriate sub-component based on task.type
+  const renderTaskContent = () => {
+    switch(task.type) {
+      case 'rebus':
+        return <RebusTask task={task} />;
+      case 'binary':
+        return <BinaryTask task={task} />;
+      case 'code':
+        return <CodeTask task={task} />;
+      default:
+        return <p>Неизвестный тип задания.</p>;
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.98, y: 10 }}
@@ -32,7 +49,7 @@ const TaskCard = ({ task }) => {
         pointerEvents: 'none'
       }} />
 
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Step Badge */}
         <div style={{ 
@@ -54,68 +71,8 @@ const TaskCard = ({ task }) => {
           <span>Шаг {task.stepIndex} из {task.totalSteps}</span>
         </div>
 
-        {/* Title */}
-        <h2 style={{ 
-          fontSize: '2rem', 
-          color: 'var(--primary-dark)', 
-          marginBottom: '24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '12px',
-          lineHeight: '1.2'
-        }}>
-          {task.title}
-          <Sparkles size={28} color="var(--accent)" style={{ flexShrink: 0 }} />
-        </h2>
-
-        {/* Description */}
-        <div style={{ 
-          fontSize: '1.15rem', 
-          lineHeight: 1.6, 
-          color: 'var(--text-dark)',
-          marginBottom: '32px',
-          background: 'var(--background)',
-          padding: '24px',
-          borderRadius: 'var(--radius)',
-          boxShadow: 'inset 0 2px 10px rgba(0,0,0,0.02)'
-        }}>
-          {task.description}
-        </div>
-
-        {/* Next Hint Block */}
-        <div style={{
-          width: '100%',
-          background: 'linear-gradient(to bottom right, var(--primary-light), #fff)',
-          padding: '20px',
-          borderRadius: 'var(--radius)',
-          textAlign: 'left',
-          display: 'flex',
-          gap: '16px',
-          alignItems: 'flex-start',
-          border: '1px solid rgba(230, 168, 215, 0.4)',
-          boxShadow: '0 4px 15px rgba(230, 168, 215, 0.1)'
-        }}>
-          <div style={{
-            background: 'white',
-            padding: '10px',
-            borderRadius: '50%',
-            boxShadow: 'var(--shadow-sm)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            <Navigation size={22} color="var(--primary-dark)" />
-          </div>
-          <div style={{ flex: 1 }}>
-            <strong style={{ display: 'block', color: 'var(--primary-dark)', marginBottom: '6px', fontSize: '1rem' }}>
-              Куда двигаться дальше?
-            </strong>
-            <span style={{ color: 'var(--text-dark)', fontSize: '0.95rem', lineHeight: 1.5 }}>
-              {task.nextHint}
-            </span>
-          </div>
-        </div>
+        {/* Dynamic task content injected here */}
+        {renderTaskContent()}
 
       </div>
     </motion.div>

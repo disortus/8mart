@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 // Layout
 import Navbar from './components/Navbar';
@@ -16,11 +16,11 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <main className="main-content">
         <Routes>
-          <Route path="/8mart" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/girls" element={<GirlsPage />} />
           <Route path="/moments" element={<MomentsPage />} />
           <Route path="/credits" element={<CreditsPage />} />
@@ -33,7 +33,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

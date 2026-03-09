@@ -41,7 +41,24 @@ const QRScanner = ({ onScanSuccess }) => {
         (decodedText) => {
           if (onScanSuccess) {
             // Wait briefly before stopping to let the UI show success or quickly redirect
-            onScanSuccess(decodedText);
+            try {
+              const url = new URL(decodedText);
+              // Expected URL: https://username.github.io/8mart/#/task-slug
+              if (url.hash && url.hash.length > 1) {
+                const targetPath = url.hash.replace('#', '');
+                navigate(targetPath);
+              } else if (url.pathname) {
+                // fallback if somebody linked without hash somehow
+                const split = url.pathname.split('/');
+                const last = split[split.length - 1];
+                navigate(`/${last}`);
+              } else {
+                navigate(decodedText);
+              }
+            } catch (e) {
+              const path = decodedText.startsWith('/') ? decodedText : `/${decodedText}`;
+              navigate(path);
+            }
           }
         },
         () => {
