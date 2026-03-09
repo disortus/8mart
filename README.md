@@ -1,18 +1,49 @@
-# React + Vite
+# March 8th Quest 🌹
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Праздничный React-проект, созданный специально для проведения мини-квеста на 8 Марта!
+Этот проект содержит публичные поздравительные страницы, встроенный QR-сканер и скрытые маршруты для заданий квеста.
 
-Currently, two official plugins are available:
+## Особенности
+- **Никакого бэкенда**: все данные хранятся локально в файлах `src/data/`, проект полностью независимый.
+- **Встроенный QR-сканер**: реализован через `html5-qrcode`. Работает в браузере с доступом к камере.
+- **Современный UI**: нежные тона, плавные анимации (через Framer Motion) и иконки Lucide React.
+- **Мобильная адаптация**: дизайн заточен под смартфоны, с которых будут сканировать коды (Mobile-First).
+- **Скрытые марштуры**: страницы заданий имеют запутанные URL-адреса, к ним нельзя перейти через обычное меню.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Структура проекта
+- `src/components`: общие переиспользуемые компоненты (`SectionTitle`, `TaskCard`, `QRScanner`, `MemoryCard` и т.д.).
+- `src/pages`: 
+  - Публичные страницы: `Home`, `GirlsPage`, `MomentsPage`, `CreditsPage`, `ScannerPage`.
+  - Скрытая страница: `TaskPage` (динамический роут).
+- `src/data`: списки данных для квеста и страниц. Замените здесь тексты и ссылки на фото на свои.
 
-## React Compiler
+## Как запустить
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Установите зависимости:
+   ```bash
+   npm install
+   ```
 
-Note: This will impact Vite dev & build performances.
+2. Запустите локальный сервер:
+   ```bash
+   npm run dev
+   ```
 
-## Expanding the ESLint configuration
+3. Откройте проект в браузере (обычно это `http://localhost:5173`).
+> **Важно**: Для работы камеры на смартфоне в локальной сети, к сайту нужно обращаться по HTTPS, либо использовать туннели вроде `ngrok`. Либо же разместить сайт на любом бесплатном хостинге: GitHub Pages, Vercel, Netlify. Камера браузера всегда требует безопасного контекста (localhost или https://).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Развертывание (Деплой)
+Чтобы собрать готовый проект (например, для заливки на Vercel или GitHub Pages):
+```bash
+npm run build
+```
+Папка `dist` будет содержать готовые статичные файлы сайта.
+
+## Как настроить под свою группу
+1. Замените тексты и фото девушек в `src/data/girlsPage.js`.
+2. Добавьте ваши общие фотографии в `src/data/gallery.js`.
+3. Впишите имена парней-организаторов в `src/data/boys.js`.
+4. В `src/data/tasks.js` прописаны сами задания и их уникальные URL-идентификаторы (`id`). 
+   - Распечатайте QR-коды для каждого `id`. Например, код для первого задания Роз должен вести на `https://ваш-домен.com/rose-7x2-petal`. 
+
+С праздником! 🎉
