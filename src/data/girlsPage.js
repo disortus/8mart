@@ -1,20 +1,24 @@
+import photo1 from "../imgs/ovas/photo_2026-03-10_04-25-44.jpg";
+import photo2 from "../imgs/ovas/photo_2026-03-10_01-34-52.jpg";
+import photo3 from "../imgs/ovas/photo_2026-03-10_04-41-30.jpg";
+
 export const girlsSections = [
   {
     id: "bright",
     title: "Вы делаете группу ярче ✨",
-    description: "С вашим появлением любая аудитория, даже та самая холодная на первом этаже, сразу становится уютнее. Без ваших шуток и смеха пары тянулись бы вечность!",
-    image: "https://images.unsplash.com/photo-1515082046835-cdb05531d041?auto=format&fit=crop&q=80&w=800",
+    description: "С вашим появлением любая аудитория, даже та самая холодная на первом этаже, сразу становится уютнее. Без ваших шуток и смеха пары тянулись бы вечность! \nЭто вы :3",
+    image: photo1,
   },
   {
     id: "support",
     title: "Спасибо за поддержку 💖",
     description: "Кто всегда поделится ручкой, подскажет правильный ответ (или хотя бы попытается) и выручит конспектом? Конечно, вы! Мы ценим вашу заботу больше, чем показываем.",
-    image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=800",
+    image: photo2,
   },
   {
     id: "beauty",
     title: "Самые красивые 🌸",
     description: "Каждый день вы приходите такие разные, но всегда прекрасные. Спасибо, что мотивируете нас не приходить в спортивках каждый день! Вы — настоящее украшение нашей группы.",
-    image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=800",
+    image: photo3,
   }
 ];
