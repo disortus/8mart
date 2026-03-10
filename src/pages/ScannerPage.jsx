@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import QRScanner from '../components/QRScanner';
 import SectionTitle from '../components/SectionTitle';
 import { QrCode } from 'lucide-react';

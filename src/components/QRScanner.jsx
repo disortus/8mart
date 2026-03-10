@@ -7,6 +7,7 @@ const QRScanner = ({ onScanSuccess }) => {
   const [error, setError] = useState(null);
   const [hasCamera, setHasCamera] = useState(true);
   const scannerRef = useRef(null);
+  const isHandlingScan = useRef(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,26 +40,23 @@ const QRScanner = ({ onScanSuccess }) => {
         { facingMode: "environment" },
         config,
         (decodedText) => {
-          if (onScanSuccess) {
-            // Wait briefly before stopping to let the UI show success or quickly redirect
-            try {
-              const url = new URL(decodedText);
-              // Expected URL: https://username.github.io/8mart/#/task-slug
-              if (url.hash && url.hash.length > 1) {
-                const targetPath = url.hash.replace('#', '');
-                navigate(targetPath);
-              } else if (url.pathname) {
-                // fallback if somebody linked without hash somehow
-                const split = url.pathname.split('/');
-                const last = split[split.length - 1];
-                navigate(`/${last}`);
-              } else {
-                navigate(decodedText);
-              }
-            } catch (e) {
-              const path = decodedText.startsWith('/') ? decodedText : `/${decodedText}`;
-              navigate(path);
-            }
+          if (isHandlingScan.current) return;
+          isHandlingScan.current = true;
+          
+          console.log("Scanned QR Code:", decodedText);
+
+          if (scannerRef.current && scannerRef.current.isScanning) {
+            scannerRef.current.stop().catch(console.error);
+          }
+
+          if (decodedText.startsWith('http://') || decodedText.startsWith('https://')) {
+            window.location.href = decodedText;
+          } else if (decodedText.startsWith('#/')) {
+            window.location.hash = decodedText;
+          } else if (decodedText.startsWith('/')) {
+            window.location.hash = "#" + decodedText;
+          } else {
+            window.location.hash = "#/" + decodedText;
           }
         },
         () => {
