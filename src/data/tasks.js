@@ -1,3 +1,7 @@
+import sportzal from "../imgs/rebus/sportzal.jpg";
+import stolovaia from "../imgs/rebus/stolovaia.jpg";
+import atrium from "../imgs/rebus/atrium.jpg";
+
 export const tasks = [
   // Команда "Розы" (Маршрут: Кабинет -> Библиотека -> Coffee Lake)
   {
@@ -9,8 +13,8 @@ export const tasks = [
     type: "rebus",
     title: "Разгадайте ребус",
     description: "Внимательно посмотрите на картинку ниже и разгадайте зашифрованное слово.",
-    rebusImage: "https://placehold.co/600x400/fce4ec/cc7ab5?text=REBUS+1+HERE",
-    answer: "весна",
+    rebusImage: sportzal,
+    answer: "спортзал",
     nextHint: "Отличная работа! Следующий QR-код ищите в храме знаний и книг.",
   },
   {
@@ -56,8 +60,8 @@ export const tasks = [
     type: "rebus",
     title: "Первая загадка",
     description: "Разгадайте ребус, чтобы понять, что мы зашифровали для вас.",
-    rebusImage: "https://placehold.co/600x400/f3e5ab/d4af37?text=REBUS+2+HERE",
-    answer: "солнце",
+    rebusImage: stolovaia,
+    answer: "столовая",
     nextHint: "Супер! Следующая подсказка ждет вас в пристанище слойки с курицей.",
   },
   {
@@ -103,8 +107,8 @@ export const tasks = [
     type: "rebus",
     title: "Мозговой штурм",
     description: "Давайте начнем с легкой разминки! Что зашифровано на этой картинке?",
-    rebusImage: "https://placehold.co/600x400/fdf5e6/cc7ab5?text=REBUS+3+HERE",
-    answer: "улыбка",
+    rebusImage: atrium,
+    answer: "атриум",
     nextHint: "Отлично! Следующий QR-код спрятан там где выступают.",
   },
   {
